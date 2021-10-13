@@ -1,0 +1,20 @@
+﻿<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Soort verzekerde</th>
+            <th scope="col">Voorletter(s)</th>
+            <th scope="col">Achternaam</th>
+            <th scope="col">BSN</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var persoon in gezinssamenstellingState.Value.personen) { 
+        <tr>
+            <td>@persoon.verzekerdeType</td>
+            <td>@persoon.voorletters</td>
+            <td>@persoon.achternaam</td>
+            <td>@persoon.bsn</td>
+        </tr>
+        }
+    </tbody>
+</table>

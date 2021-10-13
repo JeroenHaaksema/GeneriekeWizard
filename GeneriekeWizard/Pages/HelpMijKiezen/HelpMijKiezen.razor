@@ -1,0 +1,39 @@
+﻿@page "/helpmijkiezen"
+@if (DataIsOpgehaald())
+{
+@foreach (var HMK in HelpMijKiezenVragenEnAntwoorden)
+{
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <button type="button" class="btn btn-info btn-lg btn-block">@HMK.naam</button>
+            <div class="card-body">
+                <p class="card-text">@HMK.vraag</p>
+                <ul class="list-group list-group-flush">
+
+                    @foreach (var antwoord in HMK.antwoorden)
+                    {
+                @if (IngevuldeAntwoord(HMK.naam, antwoord))
+                {
+                <li class="list-group-item list-group-item-success"> @antwoord</li>
+ }
+            else
+            {
+                <li class="list-group-item"><a @onclick="() => setAntwoord(HMK.naam, antwoord)"> @antwoord</a></li>
+}}
+                </ul>
+                @if (VraagBeantwoord(HMK.naam))
+                {
+<div>
+    <span>@ZoekAdvies(HMK.naam)</span>
+</div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+                <br />
+                }
+}
+
+<button class="btn btn-info" @onclick="() => Sluiten()">Klik om pakketvergelijker te sluiten</button>

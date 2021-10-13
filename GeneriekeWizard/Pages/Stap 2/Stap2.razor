@@ -1,0 +1,26 @@
+﻿@page "/stap2"
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+
+<h3>Stap2</h3>
+
+
+<div class="row">
+    <Keuzehulp />
+</div>
+<div class="row">
+    <div class="col-8">
+        <VerzekeringKeuze />
+    </div>
+    <div class="col-4">
+        <Kassabon />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6">
+        <NavigatieKnop paginaNaam="stap1" weergaveNaam="Stap 1"></NavigatieKnop>
+    </div>
+    <div class="col-6">
+        <NavigatieKnop paginaNaam="stap3" weergaveNaam="Stap 3" magDoor="VolgendeStapToegestaan()"></NavigatieKnop>
+    </div>
+</div>

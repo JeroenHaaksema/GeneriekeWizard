@@ -1,0 +1,9 @@
+﻿<div class="row">
+    @if (IsGeladen())
+    {
+@foreach (var keuzehulpBlok in keuzehulpBlokken)
+{
+    <KeuzehulpBlok Titel="@keuzehulpBlok.titel" Tekst="@keuzehulpBlok.tekst" PaginaNaam="@keuzehulpBlok.paginaNaam" WeergaveNaam="@keuzehulpBlok.weergaveNaam"></KeuzehulpBlok>
+    }
+    }
+</div>

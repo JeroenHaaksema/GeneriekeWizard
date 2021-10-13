@@ -1,0 +1,54 @@
+﻿@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+@page "/persoonsgegevens/{persoonId:int}"
+@using static Domain_Objects.GeslachtEnum;
+
+<EditForm Model="@persoonModel" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="row">
+        <div class="col-2">Voorletters</div>
+    </div>
+    <div class="row">
+        <InputText id="Voorletters" @bind-Value="persoonModel.Voorletters" />
+    </div>
+    <div class="row">
+        <div class="col-2">Tussenvoegsel</div>
+    </div>
+    <div class="row">
+        <InputText id="Tussenvoegsel" @bind-Value="persoonModel.Tussenvoegsel" />
+    </div>
+    <div class="row">
+        <div class="col-2">Achternaam</div>
+    </div>
+    <div class="row">
+        <InputText id="Achternaam" @bind-Value="persoonModel.Achternaam" />
+    </div>
+    <div class="row">
+        <div class="col-2">BSN</div>
+    </div>
+    <div class="row">
+        <InputText id="BSN" @bind-Value="persoonModel.BSN" />
+    </div>
+
+    <div class="row">
+        <InputRadioGroup @bind-Value="persoonModel.Geslacht">
+            Geslacht:
+            <br>
+            @foreach (var geslacht in (Geslacht[])Enum
+            .GetValues(typeof(Geslacht)))
+
+
+
+            {
+                <InputRadio Value="geslacht" />
+                <text>&nbsp;</text>@geslacht<br>
+
+            }
+        </InputRadioGroup>
+    </div>
+    <button type="submit">Sla gegevens op</button>
+</EditForm>
+@if (opgeslagen)
+{
+    <NavigatieKnop paginaNaam="stap3" weergaveNaam="Ga terug naar stap 3"></NavigatieKnop>
+}

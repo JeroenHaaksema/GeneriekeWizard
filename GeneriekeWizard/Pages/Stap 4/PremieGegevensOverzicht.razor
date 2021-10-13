@@ -1,0 +1,20 @@
+﻿<div class="row">
+    <h3>Adresgegevens</h3>
+</div>
+<div class="row">
+    <div class="col-4">
+        <label>Postcode:</label>
+        <p>@adresgegevensState.Value.Postcode</p>
+    </div>
+    <div class="col-4">
+        <label>Huisnummer:</label>
+        <p>@adresgegevensState.Value.Huisnummer</p>
+    </div>
+    @if (adresgegevensState.Value.Toevoeging != null)
+    {
+    <div class="col-4">
+        <label>Toevoeging:</label>
+        <p>@adresgegevensState.Value.Toevoeging</p>
+    </div>
+    }
+</div>

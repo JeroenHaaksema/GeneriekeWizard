@@ -1,0 +1,159 @@
+﻿@page "/pakketvergelijker/{PakketType}"
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+
+@if (PakketType.Equals("tand"))
+{
+
+
+@if (DataIsOpgehaald())
+{
+<div class="row">
+    <div class="col-4">
+        <span>Selecteer vergoedingen</span>
+    </div>
+    <div class="col-8">
+        @foreach (var vergoeding in tandVergoedingen)
+        {
+<div class="row">
+    <div class="col-6">
+        <span>@vergoeding</span>
+    </div>
+    @if (VergoedingInOverzicht(vergoeding))
+    {
+<div class="col-6">
+    <span><a @onclick="() => VerwijderVergoedingUitOverzicht(vergoeding)">Verwijder uit overzicht</a></span>
+</div> }
+else
+{
+<div class="col-6">
+    <span><a @onclick="() => VoegVergoedingToeAanOverzicht(vergoeding)">Voeg toe aan overzicht</a></span>
+</div>}
+</div>              }
+    </div>
+</div>
+                    <td></td>
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <div class="card h-100 w-100">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Vergoedingssoort</h5>
+                                                        <p class="card-text">Hieronder staat de geselecteerde vergoedingssoort</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @foreach (var pakket in tandPakketten)
+                                            {
+                        <div class="col-3">
+                            <div class="card h-100 w-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">@pakket.Naam</h5>
+                                    <p class="card-text">@pakket.TekstPakketVergelijker</p>
+                                </div>
+                            </div>
+                        </div>}
+                                        </div>
+                                                            <div class="row">
+
+                                                                @foreach (var vergoeding in VergoedingenOverzicht)
+                                                                {<div class="col-3">
+                                                                        <div class="card h-100 w-100 text-white bg-info">
+                                                                            <div class="card-body">
+                                                                                <h5 class="card-title">@vergoeding</h5>
+                                                                                <span class="card-text"><a @onclick="() => VerwijderVergoedingUitOverzicht(vergoeding)">Verwijder uit overzicht</a></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                                            @foreach (var pakket in tandPakketten)
+                                                                                            {
+                                                                    @foreach (var pakketVergoeding in pakket.Vergoedingen)
+                                                                    {
+                                        @if (pakketVergoeding.VergoedingsType == vergoeding)
+                                        {
+        <div class="col-3">
+            <div class="card text-white bg-secondary h-100 w-100">
+                <div class="card-body">
+                    <p class="card-text">@pakketVergoeding.TekstPakketVergelijker</p>
+                </div>
+            </div>
+        </div>}}}}
+                                                            </div>}}
+
+@if (PakketType.Equals("aanvullend"))
+{
+
+
+@if (DataIsOpgehaald())
+{
+<div class="row">
+    <div class="col-4">
+        <span>Selecteer vergoedingen</span>
+    </div>
+    <div class="col-8">
+        @foreach (var vergoeding in aanvullendeVergoedingen)
+        {
+<div class="row">
+    <div class="col-6">
+        <span>@vergoeding</span>
+    </div>
+    @if (VergoedingInOverzicht(vergoeding))
+    {
+<div class="col-6">
+    <span><a @onclick="() => VerwijderVergoedingUitOverzicht(vergoeding)">Verwijder uit overzicht</a></span>
+</div> }
+else
+{
+<div class="col-6">
+    <span><a @onclick="() => VoegVergoedingToeAanOverzicht(vergoeding)">Voeg toe aan overzicht</a></span>
+</div>                  }
+</div>}
+    </div>
+</div>
+                    <td></td>
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <div class="card h-100 w-100">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Vergoedingssoort</h5>
+                                                        <p class="card-text">Hieronder staat de geselecteerde vergoedingssoort</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @foreach (var pakket in aanvullendePakketten)
+                                            {
+                        <div class="col-3">
+                            <div class="card h-100 w-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">@pakket.Naam</h5>
+                                    <p class="card-text">@pakket.TekstPakketVergelijker</p>
+                                </div>
+                            </div>
+                        </div>}
+                                        </div>
+                                                            <div class="row">
+
+                                                                @foreach (var vergoeding in VergoedingenOverzicht)
+                                                                {<div class="col-3">
+                                                                        <div class="card h-100 w-100 text-white bg-info">
+                                                                            <div class="card-body">
+                                                                                <h5 class="card-title">@vergoeding</h5>
+                                                                                <span class="card-text"><a @onclick="() => VerwijderVergoedingUitOverzicht(vergoeding)">Verwijder uit overzicht</a></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                                            @foreach (var pakket in aanvullendePakketten)
+                                                                                            {
+                                                                    @foreach (var pakketVergoeding in pakket.Vergoedingen)
+                                                                    {
+                                        @if (pakketVergoeding.VergoedingsType == vergoeding)
+                                        {
+        <div class="col-3">
+            <div class="card text-white bg-secondary h-100 w-100">
+                <div class="card-body">
+                    <p class="card-text">@pakketVergoeding.TekstPakketVergelijker</p>
+                </div>
+            </div>
+        </div>}}}}
+                                                            </div>}}
+
+
+<button class="btn btn-info" @onclick="()=> Sluiten()">Klik om Help Mij Kiezen te sluiten</button>

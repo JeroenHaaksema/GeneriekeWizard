@@ -1,0 +1,37 @@
+﻿@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+
+<h3>Gezinssamenstelling</h3>
+<div class="row">
+    Volwassenen
+</div>
+<div class="row">
+    <div class="col-2">
+        @if (@gezinssamenstellingState.Value.personen.Where(x => !x.IsKind()).Count() > 1)
+        {
+
+<button @onclick="@VerwijderVolwassene" class=" btn btn-secondary text-white"> - </button>}
+    </div>
+    <div class="col-2">
+        @gezinssamenstellingState.Value.personen.Where(x => !x.IsKind()).Count()
+    </div>
+    <div class="col-2">
+        <button @onclick="@VoegVolwasseneToe" class="btn btn-secondary text-white"> + </button>
+    </div>
+</div>
+<div class="row">
+    Kinderen
+</div>
+<div class="row">
+    <div class="col-2">
+        @if (@gezinssamenstellingState.Value.personen.Where(x => x.IsKind()).Count() > 0)
+        {
+
+<button @onclick="@VerwijderKind" class=" btn btn-secondary text-white"> - </button>}
+    </div>
+    <div class="col-2">
+        @gezinssamenstellingState.Value.personen.Where(x => x.IsKind()).Count()
+    </div>
+    <div class="col-2">
+        <button @onclick="@VoegKindToe" class="btn btn-secondary text-white"> + </button>
+    </div>
+</div>

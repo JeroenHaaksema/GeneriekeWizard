@@ -1,0 +1,26 @@
+﻿@page "/stap4"
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+
+
+@if (Verzonden())
+{
+    <div class="row">
+        <h3>Uw aanvraag voor een verzekering is ontvangen. </h3>
+    </div>
+}
+
+<PersoonsgegevensOverzicht gezinssamenstellingState="gezinssamenstellingState" />
+
+<PremieOverzicht verzekeringState="verzekeringState" gezinssamenstellingState="gezinssamenstellingState" />
+
+<div class="row">
+    <div class="col-6">
+        <NavigatieKnop paginaNaam="stap3" weergaveNaam="Stap 3"></NavigatieKnop>
+    </div>
+</div>
+
+
+@if (!Verzonden())
+{
+    <button class="btn btn-success" @onclick="() => VerstuurVerzekering()">Verstuur verzekering</button>
+}

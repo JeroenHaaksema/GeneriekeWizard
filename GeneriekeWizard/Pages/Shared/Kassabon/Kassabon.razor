@@ -1,0 +1,13 @@
+﻿@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+
+<div class="row">
+    Kassabon
+</div>
+@foreach (var persoon in @gezinssamenstellingState.Value.personen)
+{
+    <KassabonRij persoon="persoon" aanvullendeverzekering="VindAanvullendeVerzekering(persoon.id)"
+    basisverzekering="VindBasisVerzekering(persoon.id)" tandverzekering="VindTandVerzekering(persoon.id)"></KassabonRij>
+}
+<div class="row">
+    Totaalbedrag: € @BerekenTotaalPrijs();
+</div>

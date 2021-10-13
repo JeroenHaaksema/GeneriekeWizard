@@ -1,0 +1,26 @@
+﻿@if (gegevensGeladen) {
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Naam</th>
+            <th scope="col">Basisverzekering</th>
+            <th scope="col">Aanvullende verzekering</th>
+            <th scope="col">Tand verzekering</th>
+            <th scope="col">Eigen risico</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var premieOverzichtDTO in premieOverzichtDTOList)
+        {
+        <tr>
+            <td>@premieOverzichtDTO.naam</td>
+            <td>@premieOverzichtDTO.persoonVerzekering.basisverzekering.naam</td>
+            <td>@(premieOverzichtDTO.persoonVerzekering.aanvullendeverzekering != null ? premieOverzichtDTO.persoonVerzekering.aanvullendeverzekering.naam : geen)</td>
+            <td>@(premieOverzichtDTO.persoonVerzekering.tandverzekering != null ? premieOverzichtDTO.persoonVerzekering.tandverzekering.naam : geen)</td>
+            <td>€@premieOverzichtDTO.persoonVerzekering.eigenRisico</td>
+        </tr>
+        }
+    </tbody>
+</table>
+}

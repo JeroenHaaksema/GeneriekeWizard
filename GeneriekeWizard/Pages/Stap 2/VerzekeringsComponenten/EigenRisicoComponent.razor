@@ -1,0 +1,30 @@
+﻿<div class="row">
+    Kies de hoogte van het eigen risisco
+</div>
+<div class="row w-100">
+
+
+    @foreach (var volwassene in @gezinssamenstellingState.Value.personen.Where(x => !x.IsKind()))
+    {
+        <div class="card w-75">
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text">Kies de hoogte van het eigen risisco voor: @volwassene.GetPersoonsType()</p>
+                <div class="btn-group-vertical">
+                    @foreach (int eigenRisicoTrede in eigenRisicoTredes)
+                    {
+                        @if (Geselecteerd(volwassene.id, eigenRisicoTrede))
+                        {
+                            <button type="button" class="btn btn-success">€@eigenRisicoTrede</button>
+                        }
+                        else
+                        {
+                            <button type="button" class="btn btn-secondary" @onclick="() => SelectEigenRisicoVoorPersoon(volwassene.id, eigenRisicoTrede)">€@eigenRisicoTrede</button>
+                        }
+                    }
+
+                </div>
+            </div>
+        </div>
+    }
+</div>

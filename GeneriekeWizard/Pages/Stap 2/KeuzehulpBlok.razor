@@ -1,0 +1,20 @@
+﻿<div class="col-4">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">@Titel</h5>
+            <p class="card-text">@Tekst</p>
+        </div>
+    </div>
+    <NavigatieKnop paginaNaam="@PaginaNaam" weergaveNaam="@WeergaveNaam"></NavigatieKnop>
+</div>
+
+@code {
+    [Parameter]
+    public string Titel { get; set; }
+    [Parameter]
+    public string Tekst { get; set; }
+    [Parameter]
+    public string PaginaNaam { get; set; }
+    [Parameter]
+    public string WeergaveNaam { get; set; }
+}

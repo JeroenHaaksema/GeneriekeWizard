@@ -1,0 +1,29 @@
+﻿@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+<div class="row">
+    Kies een basisverzekering
+</div>
+<div class="row">
+    @foreach (var verzekeringsTekst in basisverzekeringsTeksten)
+    {
+<div class="col-4">
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">@verzekeringsTekst.naam</h5>
+            <p class="card-text">@verzekeringsTekst.tekst</p>
+            <p>Prijs: €@verzekeringsTekst.prijs </p>
+        </div>
+    </div>
+
+
+    @foreach (var volwassene in @gezinssamenstellingState.Value.personen.Where(x => !x.IsKind()))
+    {
+
+
+@if (Geselecteerd(volwassene.id, verzekeringsTekst.id))
+{
+<button class="btn btn-success">Geselecteerd voor: @volwassene.GetPersoonsType()</button> }
+else
+{
+<button class="btn btn-info" @onclick="() => SelectBasisVerzekering(volwassene.id, verzekeringsTekst.id)">Selecteer pakket voor: @volwassene.GetPersoonsType()</button>}}
+</div>}
+</div>

@@ -1,0 +1,22 @@
+﻿@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+@foreach (var persoon in gezinssamenstellingState.Value.personen)
+{
+<div class="row w-50">
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Wijzigs persoonsgegevens</h5>
+            @if (persoon.voorletters != null)
+            {
+<a href="/persoonsgegevens/@persoon.id" class="btn btn-success">
+    Bewerk persoonsgegevens van
+    @persoon.voorletters @persoon.tussenvoegsel?  @persoon.achternaam
+</a> }
+else if (persoon.voorletters == null)
+{
+<a href="/persoonsgegevens/@persoon.id" class="btn btn-primary">
+    Vul persoonsgegevens van
+    @persoon.GetPersoonsType()
+</a>}
+        </div>
+    </div>
+</div>}

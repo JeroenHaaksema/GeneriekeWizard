@@ -1,0 +1,41 @@
+﻿<div class="row">
+    <div class="col-8 border border-dark rounded">
+        @persoon.GetPersoonsType()
+    </div>
+</div>
+
+    @if (basisverzekering != null)
+    {
+        <div class="row">
+            <div class="col-4">
+                @basisverzekering.naam
+            </div>
+            <div class="col-4">
+                €@basisverzekering.prijs
+            </div>
+        </div>
+    }
+    @if (aanvullendeverzekering != null)
+    {
+        <div class="row">
+            <div class="col-4">
+                @aanvullendeverzekering.naam
+            </div>
+            <div class="col-4">
+                €@aanvullendeverzekering.prijs
+            </div>
+        </div>
+    }
+    @if (tandverzekering != null)
+    {
+        <div class="row">
+            <div class="col-4">
+                @tandverzekering.naam
+            </div>
+            <div class="col-4">
+                €@tandverzekering.prijs
+            </div>
+        </div>
+    }
+
+<br />

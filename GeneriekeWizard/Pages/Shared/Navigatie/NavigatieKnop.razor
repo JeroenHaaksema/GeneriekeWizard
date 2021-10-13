@@ -1,0 +1,29 @@
+﻿@inject NavigationManager _navigationManager
+
+@if (!(bool)magDoor)
+{
+    <button class="btn btn-secondary">Vul alle benodigde gegevens in</button>
+}
+else
+{
+    <button @onclick="Navigeer" class="btn btn-primary">Ga naar: @weergaveNaam</button>
+}
+@code {
+
+    [Parameter]
+    public string paginaNaam { get; set; }
+    [Parameter]
+    public string weergaveNaam { get; set; }
+    [Parameter]
+    public Boolean? magDoor { get; set; } = true;
+
+    public void Navigeer()
+    {
+        GaNaar(paginaNaam);
+    }
+
+    public void GaNaar(string paginaNaam)
+    {
+        _navigationManager.NavigateTo(paginaNaam);
+    }
+}

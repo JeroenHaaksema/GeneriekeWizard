@@ -1,0 +1,94 @@
+﻿@using static Domain_Objects.BetaaltermijnEnum;
+@using static Domain_Objects.BetaalTypeEnum;
+
+
+<EditForm Model="@premieGegevensModel" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="row">
+        <h3>Adresgegevens</h3>
+    </div>
+    <div class="form-group">
+        <label>Postcode</label>
+        <InputText id="Postcode" @bind-Value="premieGegevensModel.Postcode" placeholder="Voer uw postcode in"
+            class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Huisnummer</label>
+        <InputNumber id="Huisnummer" @bind-Value="premieGegevensModel.Huisnummer" placeholder="Voer uw huisnummer in"
+            class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Toevoeging</label>
+        <InputText id="Toevoeging" @bind-Value="premieGegevensModel.Toevoeging" placeholder="Voer uw toevoeging in"
+            class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Land</label>
+    </div>
+    <select class="form-select" @bind="premieGegevensModel.Land.Id">
+        @foreach (var land in Landen)
+
+        {
+            <option value="@land.Id">@land.Naam</option>
+        }
+    </select>
+
+    <div class="row">
+        <h3>Contactgegevens</h3>
+    </div>
+    <div class="form-group">
+        <label>Telefoonnummer</label>
+        <InputText id="TelefoonNummer" @bind-Value="premieGegevensModel.TelefoonNummer"
+            placeholder="Voer uw telefoonnummer in" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>E-mailadres</label>
+        <InputText id="Emailadres" @bind-Value="premieGegevensModel.EmailAdres" placeholder="Voer uw e-mailadres in"
+            class="form-control" />
+    </div>
+    <div class="row">
+        <h3>Betaalgegevens</h3>
+    </div>
+    <div class="form-group">
+        <label>Kies uw betaaltermijn:</label>
+    </div>
+    <div class="row">
+        <InputRadioGroup @bind-Value="premieGegevensModel.BetaalTermijn">
+            @foreach (var betaaltermijn in (Betaaltermijn[])Enum
+            .GetValues(typeof(Betaaltermijn)))
+
+            {
+                <InputRadio Value="betaaltermijn" />
+                <text>&nbsp;</text>@betaaltermijn<br>
+            }
+        </InputRadioGroup>
+    </div>
+    <div class="form-group">
+        <label>Kies op welke manier u wenst te betalen:</label>
+    </div>
+    <div class="row">
+        <InputRadioGroup @bind-Value="premieGegevensModel.BetaalType">
+            @foreach (var betaalType in (BetaalType[])Enum
+            .GetValues(typeof(BetaalType)))
+
+            {
+                <InputRadio Value="betaalType" />
+                <text>&nbsp;</text>@betaalType<br>
+            }
+        </InputRadioGroup>
+    </div>
+
+    <div class="form-group">
+        <label>Vult u alstublieft uw rekeningnummer in:</label>
+    </div>
+    <div class="form-group">
+        <label>Rekeningnummer</label>
+        <InputText id="RekeningNummer" @bind-Value="premieGegevensModel.RekeningNummer"
+            placeholder="Voer uw rekeningnummer in" class="form-control" />
+    </div>
+    <div class="row">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</EditForm>
