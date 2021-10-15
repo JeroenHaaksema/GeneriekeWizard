@@ -54,7 +54,7 @@ namespace GeneriekeWizard.Pages.HelpMijKiezen
             VraagEnAntwoord.Add(keyValuePair);
         }
 
-        private string ZoekAdvies(string naam)
+        public string ZoekAdvies(string naam)
         {
             string advies = "Wij adviseren u het pakket ";
             int vergoeding = ZoekWaarde(naam);

@@ -52,7 +52,7 @@ namespace GeneriekeWizard.Pages.Stap_4
             return verzonden;
         }
 
-        protected void VerstuurVerzekering()
+        private void VerstuurVerzekering()
         {
             try { 
             _wizardAPIService.PostAsync("/api/wizard", VerzamelGegevens());

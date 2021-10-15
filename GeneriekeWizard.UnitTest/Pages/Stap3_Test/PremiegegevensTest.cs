@@ -81,8 +81,7 @@ namespace GeneriekeWizard.UnitTest.Pages.Stap3_Test
             _dispatcher.Setup(x => x.Dispatch(It.IsAny<SetEmailAdres>()));
             _dispatcher.Setup(x => x.Dispatch(It.IsAny<SetTelefoonNummer>()));
             //Act 
-            var cut = ctx.RenderComponent<PersoonsgegevensDetails>(parameters => parameters
-            .Add(p => p.persoonId, 1));
+            var cut = ctx.RenderComponent<Premiegegevens>();
             cut.Instance.HandleValidSubmit();
 
             //Assert
