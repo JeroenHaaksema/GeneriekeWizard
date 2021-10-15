@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Xunit;
 using Bunit;
 using GeneriekeWizard.Pages.Stap_1;
@@ -18,6 +14,7 @@ namespace GeneriekeWizard.UnitTest.Pages.Stap1_Test
 {
     public class Stap1
     {
+
 
         private readonly Mock<IState<GezinssamenstellingState>> _mockGezinssamenstellingState;
         private List<Persoon> personen;
@@ -52,31 +49,40 @@ namespace GeneriekeWizard.UnitTest.Pages.Stap1_Test
             Assert.NotNull(cut.Instance);
         }
 
+        //Fluxor testen werken niet omdat het specifiek voor Blazor is en 
+        /*
         [Fact]
-        public void VoegVolwasseneToeWerkt()
+        public void VoegVolwasseneToeWordtUitgevoerd()
         {
-            // Arrange
+            //Arrange
             using var ctx = new TestContext();
             var gezinssamenstellingState = new GezinssamenstellingState(personen);
-            var _dispatcher = new Mock<IDispatcher>();
+            Mock<IDispatcher> _dispatcher = new Mock<IDispatcher>();
+            _dispatcher.Setup(x => x.Dispatch(It.IsAny<VoegVolwasseneToe>()));
+            
+            
+
+
             var _actionSubscriber = new Mock<IActionSubscriber>();
             var _reducer = new Mock<GezinssamenstellingReducer>();
+
             ctx.Services.AddSingleton(_mockGezinssamenstellingState.Object);
-            ctx.Services.AddSingleton(_dispatcher.Object);
             ctx.Services.AddSingleton(_actionSubscriber.Object);
             ctx.Services.AddSingleton(_reducer.Object);
 
-
             _mockGezinssamenstellingState.Setup(s => s.Value).Returns(gezinssamenstellingState);
-            _reducer.Setup(x = > x.AddVolwasseneAction()).Returns()
-            _
-            // Act
+
+            
+
             var cut = ctx.RenderComponent<Gezinssamenstelling>();
             cut.Instance.VoegVolwasseneToe();
 
             //Assert
-            Assert.True(gezinssamenstellingState.personen.Count.Equals(2));
+            _dispatcher.Verify(x => x.Dispatch(It.IsAny<VoegVolwasseneToe>()), Times.Once);
         }
+        */ 
     }
+
+    
 
     }

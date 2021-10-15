@@ -1,8 +1,6 @@
 ﻿using Fluxor;
 using GeneriekeWizard.Store.Gezinssamenstelling;
 using GeneriekeWizard.Store.Gezinssamenstelling.Gezinssamenstelling.Actions;
-using GeneriekeWizard.Store.Verzekering;
-using GeneriekeWizard.Store.Verzekering.Actions;
 using GeneriekeWizard.Store.Verzekering.Actions.Delete;
 using Microsoft.AspNetCore.Components;
 using System;
