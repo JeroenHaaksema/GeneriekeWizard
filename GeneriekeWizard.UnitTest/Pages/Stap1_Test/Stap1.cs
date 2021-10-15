@@ -49,8 +49,7 @@ namespace GeneriekeWizard.UnitTest.Pages.Stap1_Test
             Assert.NotNull(cut.Instance);
         }
 
-        //Fluxor testen werken niet omdat het specifiek voor Blazor is en 
-        /*
+
         [Fact]
         public void VoegVolwasseneToeWordtUitgevoerd()
         {
@@ -59,14 +58,11 @@ namespace GeneriekeWizard.UnitTest.Pages.Stap1_Test
             var gezinssamenstellingState = new GezinssamenstellingState(personen);
             Mock<IDispatcher> _dispatcher = new Mock<IDispatcher>();
             _dispatcher.Setup(x => x.Dispatch(It.IsAny<VoegVolwasseneToe>()));
-            
-            
-
-
             var _actionSubscriber = new Mock<IActionSubscriber>();
             var _reducer = new Mock<GezinssamenstellingReducer>();
 
             ctx.Services.AddSingleton(_mockGezinssamenstellingState.Object);
+            ctx.Services.AddSingleton(_dispatcher.Object);
             ctx.Services.AddSingleton(_actionSubscriber.Object);
             ctx.Services.AddSingleton(_reducer.Object);
 
@@ -80,7 +76,87 @@ namespace GeneriekeWizard.UnitTest.Pages.Stap1_Test
             //Assert
             _dispatcher.Verify(x => x.Dispatch(It.IsAny<VoegVolwasseneToe>()), Times.Once);
         }
-        */ 
+
+        [Fact]
+        public void VerwijderVolwasseneWordtUitgevoerd()
+        {
+            //Arrange
+            using var ctx = new TestContext();
+            var gezinssamenstellingState = new GezinssamenstellingState(personen);
+            Mock<IDispatcher> _dispatcher = new Mock<IDispatcher>();
+            _dispatcher.Setup(x => x.Dispatch(It.IsAny<VerwijderVolwassene>()));
+            var _actionSubscriber = new Mock<IActionSubscriber>();
+            var _reducer = new Mock<GezinssamenstellingReducer>();
+
+            ctx.Services.AddSingleton(_mockGezinssamenstellingState.Object);
+            ctx.Services.AddSingleton(_dispatcher.Object);
+            ctx.Services.AddSingleton(_actionSubscriber.Object);
+            ctx.Services.AddSingleton(_reducer.Object);
+
+            _mockGezinssamenstellingState.Setup(s => s.Value).Returns(gezinssamenstellingState);
+
+
+
+            var cut = ctx.RenderComponent<Gezinssamenstelling>();
+            cut.Instance.VerwijderVolwassene();
+
+            //Assert
+            _dispatcher.Verify(x => x.Dispatch(It.IsAny<VerwijderVolwassene>()), Times.Once);
+        }
+
+        [Fact]
+        public void VoegKindToeWordtUitgevoerd()
+        {
+            //Arrange
+            using var ctx = new TestContext();
+            var gezinssamenstellingState = new GezinssamenstellingState(personen);
+            Mock<IDispatcher> _dispatcher = new Mock<IDispatcher>();
+            _dispatcher.Setup(x => x.Dispatch(It.IsAny<VoegKindToe>()));
+            var _actionSubscriber = new Mock<IActionSubscriber>();
+            var _reducer = new Mock<GezinssamenstellingReducer>();
+
+            ctx.Services.AddSingleton(_mockGezinssamenstellingState.Object);
+            ctx.Services.AddSingleton(_dispatcher.Object);
+            ctx.Services.AddSingleton(_actionSubscriber.Object);
+            ctx.Services.AddSingleton(_reducer.Object);
+
+            _mockGezinssamenstellingState.Setup(s => s.Value).Returns(gezinssamenstellingState);
+
+
+
+            var cut = ctx.RenderComponent<Gezinssamenstelling>();
+            cut.Instance.VoegKindToe();
+
+            //Assert
+            _dispatcher.Verify(x => x.Dispatch(It.IsAny<VoegKindToe>()), Times.Once);
+        }
+
+        [Fact]
+        public void VerwijderKindWordtUitgevoerd()
+        {
+            //Arrange
+            using var ctx = new TestContext();
+            var gezinssamenstellingState = new GezinssamenstellingState(personen);
+            Mock<IDispatcher> _dispatcher = new Mock<IDispatcher>();
+            _dispatcher.Setup(x => x.Dispatch(It.IsAny<VerwijderKind>()));
+            var _actionSubscriber = new Mock<IActionSubscriber>();
+            var _reducer = new Mock<GezinssamenstellingReducer>();
+
+            ctx.Services.AddSingleton(_mockGezinssamenstellingState.Object);
+            ctx.Services.AddSingleton(_dispatcher.Object);
+            ctx.Services.AddSingleton(_actionSubscriber.Object);
+            ctx.Services.AddSingleton(_reducer.Object);
+
+            _mockGezinssamenstellingState.Setup(s => s.Value).Returns(gezinssamenstellingState);
+
+
+
+            var cut = ctx.RenderComponent<Gezinssamenstelling>();
+            cut.Instance.VerwijderKind();
+
+            //Assert
+            _dispatcher.Verify(x => x.Dispatch(It.IsAny<VerwijderKind>()), Times.Once);
+        }
     }
 
     
