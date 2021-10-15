@@ -28,7 +28,7 @@ namespace GeneriekeWizard.Pages.Stap_2.VerzekeringsComponenten
         [Inject]
         public IDispatcher Dispatcher { get; set; }
 
-        private void SelectTandVerzekering(int persoonId, int tandverzekeringId)
+        public void SelectTandVerzekering(int persoonId, int tandverzekeringId)
         {
             SelectTandVerzekeringVoorPersoon(persoonId, tandverzekeringId);
             UpdateTandVerzekeringVoorKinderen();
@@ -50,7 +50,7 @@ namespace GeneriekeWizard.Pages.Stap_2.VerzekeringsComponenten
             }
         }
 
-        private void DeleteTandVerzekering(int persoonId)
+        public void DeleteTandVerzekering(int persoonId)
         {
             DeleteTandVerzekeringVoorPersoon(persoonId);
             UpdateTandVerzekeringVoorKinderen();

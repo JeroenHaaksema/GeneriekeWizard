@@ -24,7 +24,7 @@ namespace GeneriekeWizard.Pages.Stap_3
         public IDispatcher Dispatcher { get; set; }
         private Persoon persoon { get; set; }
         private Boolean opgeslagen = false;
-        private void HandleValidSubmit()
+        public void HandleValidSubmit()
         {
             Dispatcher.Dispatch(new SetVoorletters(persoonId, persoonModel.Voorletters));
             Dispatcher.Dispatch(new SetTussenvoegsel(persoonId, persoonModel.Tussenvoegsel));
@@ -34,7 +34,7 @@ namespace GeneriekeWizard.Pages.Stap_3
             opgeslagen = true;
         }
 
-        private void SetPersoonsgegevens(int persoonId)
+        public void SetPersoonsgegevens(int persoonId)
         {
             persoon = gezinssamenstellingState.Value.personen.Find(x => x.id == persoonId);
             if (persoon.voorletters != null)

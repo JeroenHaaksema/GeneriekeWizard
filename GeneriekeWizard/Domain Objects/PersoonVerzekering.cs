@@ -12,6 +12,15 @@ namespace GeneriekeWizard.Domain_Objects
 
         }
 
+        public PersoonVerzekering(int persoonId, Basisverzekering basisverzekering, Aanvullendeverzekering aanvullendeverzekering, Tandverzekering tandverzekering, int eigenrisico)
+        {
+            this.persoonId = persoonId;
+            this.basisverzekering = basisverzekering;
+            this.aanvullendeverzekering = aanvullendeverzekering;
+            this.tandverzekering = tandverzekering;
+            this.eigenRisico = eigenRisico;
+        }
+
         public int persoonId { get; set; }
         public Basisverzekering basisverzekering { get; set; }
         public Aanvullendeverzekering aanvullendeverzekering { get; set; }

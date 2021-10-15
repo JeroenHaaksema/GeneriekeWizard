@@ -25,7 +25,7 @@ namespace GeneriekeWizard.Pages.Stap_2.VerzekeringsComponenten
         private IState<VerzekeringState> verzekeringState { get; set; }
         [Inject]
         public IDispatcher Dispatcher { get; set; }
-        private void SelectBasisVerzekering(int persoonId, int basisverzekeringId)
+        public void SelectBasisVerzekering(int persoonId, int basisverzekeringId)
         {
             SelectBasisVerzekeringVoorPersoon(persoonId, basisverzekeringId);
             UpdateBasisVerzekeringVoorKinderen();

@@ -136,7 +136,14 @@ namespace GeneriekeWizard.UnitTest.Pages.Stap1_Test
         {
             //Arrange
             using var ctx = new TestContext();
-            var gezinssamenstellingState = new GezinssamenstellingState(personen);
+            List<Persoon> gezinsstateMetKinderen = new List<Persoon>()
+            {
+            new Persoon(1, VerzekerdeType.Hoofdverzekerde),
+            new Persoon(2, VerzekerdeType.Kind),
+            new Persoon(3, VerzekerdeType.Kind),
+            };
+        
+            var gezinssamenstellingState = new GezinssamenstellingState(gezinsstateMetKinderen);
             Mock<IDispatcher> _dispatcher = new Mock<IDispatcher>();
             _dispatcher.Setup(x => x.Dispatch(It.IsAny<VerwijderKind>()));
             var _actionSubscriber = new Mock<IActionSubscriber>();
@@ -150,7 +157,7 @@ namespace GeneriekeWizard.UnitTest.Pages.Stap1_Test
             _mockGezinssamenstellingState.Setup(s => s.Value).Returns(gezinssamenstellingState);
 
 
-
+            //Act
             var cut = ctx.RenderComponent<Gezinssamenstelling>();
             cut.Instance.VerwijderKind();
 

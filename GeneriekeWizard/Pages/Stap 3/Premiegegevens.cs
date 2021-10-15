@@ -49,7 +49,7 @@ namespace GeneriekeWizard.Pages.Stap_3
             base.OnInitialized();
         }
 
-        private void HandleValidSubmit()
+        public void HandleValidSubmit()
         {
             //Adresgegevens
             Dispatcher.Dispatch(new SetHuisnummer(premieGegevensModel.Huisnummer));
